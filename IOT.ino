@@ -18,6 +18,15 @@ https://github.com/Azure-Samples/iot-hub-feather-huzzah-client-app
 #include <ArduinoJson.h>
 #include "time.h"
 
+#ifdef ESP32
+#pragma message(THIS EXAMPLE IS FOR ESP8266 ONLY!)
+#error Select ESP8266 board.
+#endif
+
+//-------------------------------------------------------
+// Initial settings
+//--------------------------------------------------------
+
 // If you using sensors uncomment next line
 #define useSensors true
 #define LEDPin 16
@@ -31,14 +40,6 @@ https://github.com/Azure-Samples/iot-hub-feather-huzzah-client-app
 #endif
 
 
-
-#ifdef ESP32
-#pragma message(THIS EXAMPLE IS FOR ESP8266 ONLY!)
-#error Select ESP8266 board.
-#endif
-
-//--------------------------------------------------------
-// Initial settings
 // WiFi Settings
 const char* wifi_ssid = "<wifi_ssid>";
 const char* wifi_password = "<wifi_password>";
@@ -65,6 +66,7 @@ const char* iothub_subscribe_endpoint = "devices/<device>/messages/devicebound/#
 // Default topic feed for publishing is "devices/<device>/messages/events/"
 const char* iothub_publish_endpoint = "devices/<device>/messages/events/";
 
+//--------------------------------------------------------
 
 
 WiFiClientSecure espClient;
